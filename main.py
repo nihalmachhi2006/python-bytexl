@@ -123,3 +123,4 @@ for index, fruit in enumerate(fruits):
 # 1: banana
 # 2: cherry
 
+# restart learning python using gfg
