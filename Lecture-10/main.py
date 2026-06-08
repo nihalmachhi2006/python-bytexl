@@ -1,1 +1,0 @@
-print('Lecture 10')
