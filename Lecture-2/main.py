@@ -51,3 +51,45 @@ class Solution:
                 high = guess - 1
         
         return ans
+
+# Allocate Minimum Pages 
+
+class Solution:
+    def findPages(self, arr, k):
+        # code here
+        n = len(arr)
+        students = k
+
+        if n < students:
+            return -1
+
+        low = max(arr)
+        high = sum(arr)
+        ans = -1
+
+        def search(arr, n, limit, students):
+            cnt = 1
+            pages = 0
+
+            for i in range(n):
+                if pages + arr[i] <= limit:
+                    pages += arr[i]
+                else:
+                    cnt += 1
+                    pages = arr[i]
+
+                    if cnt > students:
+                        return False
+
+            return True
+
+        while low <= high:
+            guess = (low + high) // 2
+
+            if search(arr, n, guess, students):
+                ans = guess
+                high = guess - 1
+            else:
+                low = guess + 1
+
+        return ans
