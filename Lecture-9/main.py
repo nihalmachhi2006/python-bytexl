@@ -44,3 +44,23 @@ class Solution:
             ans.append(level)
 
         return ans
+
+
+# Same Tree
+
+ def fun(p,q):
+            if(p == None and q == None):
+                return True
+            if(p == None or q == None):
+                return False
+            if(p.val != q.val):
+                return False
+
+            r1 = fun(p.left,q.left)
+            r2 = fun(p.right,q.right)
+
+            if(r1 == True and r2 == True):
+                return True
+            return False
+
+        return fun(p,q)
