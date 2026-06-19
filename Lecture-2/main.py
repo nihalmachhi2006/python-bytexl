@@ -116,3 +116,37 @@ class Solution:
             sum = sum - arr[low - 1]
             sum = sum + arr[high]
         return ans
+
+
+
+209. Minimum Size Subarray Sum
+Solved
+Medium
+Topics
+premium lock icon
+Companies
+# Given an array of positive integers nums and a positive integer target, return the minimal length of a subarray whose sum is greater than or equal to target. If there is no such subarray, return 0 instead.
+
+
+class Solution:
+    def minSubArrayLen(self, target: int, nums: List[int]) -> int:
+            low = 0
+            high = 0
+            n = len(nums)
+            ans = float('inf')
+            sum = 0
+            while(high<n):
+
+                sum = sum + nums[high]
+                while(sum>=target):
+                    lenght = high - low + 1
+                    ans = min(ans,lenght)
+                    sum = sum - nums[low]
+                    low+=1
+                high +=1
+            if ans == float('inf'):
+                return 0
+            return ans
+        
+
+        
