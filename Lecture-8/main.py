@@ -2,51 +2,48 @@ print('Lecture 8')
 
 # Sq the Array with negative value
 
+# updatea the solution
 class Solution:
+    # from typing import List
     def sortedSquares(self, nums: List[int]) -> List[int]:
-            pos=[]
-            neg=[]
-            n = len(nums)
+        siz = len(nums)
+        neg = []
+        pos = []
 
-            for i in nums:
-                if(i<0):
-                    neg.append(i)
-                else:
-                    pos.append(i)
-            
-            if(len(neg) == 0):
-                for x in neg:
-                    x * x
-                return
-            if(len(pos) == 0):
-                for x in pos:
-                    ans = x*x
-                    ans.reverse
-                return ans
+        for num in nums:
+            if num < 0:
+                neg.append(num)
+            else:
+                pos.append(num)
+        if len(pos) == 0:
+            for x in pos:
+                res = x * x
+                return res
+        if len(neg) == 0:
+            for x in neg:
+                res = x * x
+                return res
+        neg = [x*x for x in neg][::-1]
+        pos = [x*x for x in pos]
+        
+        n,m = len(neg),len(pos)
+        res = []
 
-            neg = [x*x for x in neg][::-1]
-            pos = [x*x for x in pos]
+        i = j = 0
+        while i<n and j<m:
+            if neg[i] <= pos[j]:
+                res.append(neg[i])
+                i += 1
+            else:
+                res.append(pos[j])
+                j += 1
 
-            n = len(neg)
-            m = len(pos)
-
-            i = 0
-            j = 0
-            ans = []
-            while(i<n and j<m):
-                if(neg[i] < pos[j]):
-                    ans.append(neg[i])
-                    i+=1
-                else:
-                    ans.append(pos[j])
-                    j+=1
-            while(i<n):
-                ans.append(neg[i])
-                i+=1
-            while(j<m):
-                ans.append(pos[j])
-                j+=1
-            return ans          
+        while i<n:
+            res.append(neg[i])
+            i+=1
+        while j<m:
+            res.append(pos[j])
+            j+=1   
         
 
         
