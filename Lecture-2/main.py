@@ -93,3 +93,26 @@ class Solution:
                 low = guess + 1
 
         return ans
+
+
+# fixd windows 
+class Solution:
+    def maxSubarraySum(self, arr, k):
+        # code here 
+        low = 0
+        high = k - 1
+        sum = 0
+        ans = 0
+        n = len(arr)
+        for i in range(low,high+1):
+            sum = sum + arr[i]
+            
+        while(high<n):
+            ans = max(ans,sum)
+            low +=1
+            high+=1
+            if(high == n):
+                break
+            sum = sum - arr[low - 1]
+            sum = sum + arr[high]
+        return ans
