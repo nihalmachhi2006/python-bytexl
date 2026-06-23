@@ -147,6 +147,24 @@ class Solution:
             if ans == float('inf'):
                 return 0
             return ans
-        
+# Happy Numbers
+
+class Solution:
+    def isHappy(self, n: int) -> bool:
+        slow = n
+        fast = n
+        def fun(n):
+            sum = 0
+            while(n>0):
+                d = n%10
+                n = n//10
+                sum = sum + d*d
+            return sum
+        while(fast!=n):
+            slow = fun(slow)
+            fast = fun(fun(fast))
+            if(slow == fast and slow != 1):
+                return False
+        return True
 
         
