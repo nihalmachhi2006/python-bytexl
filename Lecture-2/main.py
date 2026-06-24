@@ -167,4 +167,29 @@ class Solution:
                 return False
         return True
 
+
+# 1186. Maximum Subarray Sum with One Deletion
+
+class Solution:
+    def maximumSum(self, arr: List[int]) -> int:
+        nodel = arr[0]
+        onedel = float('inf')
+        ans = arr[0]
+        n = len(arr)
+        v2 = 0
+        for i in range(1,n):
+            prevnodel = nodel
+            prevonedel = onedel
+            
+            nodel = max(nodel + arr[i],arr[i])
+            if(prevonedel == float('inf')):
+                v2 = arr[i]
+            else:
+                v2 = prevonedel + arr[i]
+            onedel = max(v2,prevnodel)
+            ans = max(ans,max(onedel,nodel))
+        return ans
+
+        
+
         
