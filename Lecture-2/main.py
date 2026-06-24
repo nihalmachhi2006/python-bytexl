@@ -210,6 +210,33 @@ class Solution:
             minsum = min(minsum,minending)
         return max(maxsum,abs(minsum))
 
+
+# 918. Maximum Sum Circular Subarray not working 
+class Solution:
+    def maxSubarraySumCircular(self, nums: List[int]) -> int:
+        minbestending = nums[0]
+        maxbestending = nums[0]
+        maxsum = nums[0]
+        minsum = nums[0]
+        ans = nums[0]
+        totalsum = nums[0]
+        n = len(nums)
+
+        for i in range(1,n):
+            totalsum += nums[i]
+            minbestending = min(minbestending + nums[i], nums[i])
+            minsum = min(minsum,minbestending)
+
+            maxbestending = max(maxbestending + nums[i], nums[i])
+            maxsum = max(maxsum,maxbestending)
+
+            if maxsum < 0:
+                return maxsum
+
+            # ans = max(ans,max(maxsum,totalsum - minsum))
+        return max(maxsum,totalsum - minsum)
+        
+
         
 
         
