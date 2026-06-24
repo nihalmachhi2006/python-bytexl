@@ -190,6 +190,26 @@ class Solution:
             ans = max(ans,max(onedel,nodel))
         return ans
 
+
+# 1749. Maximum Absolute Sum of Any Subarray
+
+
+
+class Solution:
+    def maxAbsoluteSum(self, nums: List[int]) -> int:
+        maxending = 0
+        minending = 0
+        maxsum = 0
+        minsum = 0
+
+        for i in nums:
+            maxending = max(i,maxending + i)
+            maxsum = max(maxsum,maxending)
+
+            minending = min(i,minending + i)
+            minsum = min(minsum,minending)
+        return max(maxsum,abs(minsum))
+
         
 
         
