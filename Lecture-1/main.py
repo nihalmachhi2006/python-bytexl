@@ -74,28 +74,31 @@ class Solution:
 
 # class Solution {
 #     public int maxSubarraySum(int[] arr, int k) {
-#         // Code here
-#      int n = arr.length;
-#         if (n < k) return 0;
+#         int low = 0;
+#         int high = k - 1;
+#         int ans = 0;
+#         int sum = 0;
+#         int n = arr.length - 1;
 
-#         int windowSum = 0;
-#         int maxSum = Integer.MIN_VALUE;
-
-#         // sum of first k elements
-#         for (int i = 0; i < k; i++) {
-#             windowSum += arr[i];
-#         }
-#         maxSum = windowSum;
-
-#         // slide the window
-#         for (int i = k; i < n; i++) {
-#             windowSum += arr[i] - arr[i - k];
-#             maxSum = Math.max(maxSum, windowSum);
+#         for (int i = 0; i <= high; i++) {
+#             sum += arr[i];
 #         }
 
-#         return maxSum;
+#         while (high <= n) {
+#             ans = Math.max(ans, sum);
+
+#             low++;
+#             high++;
+
+#             if (high > n) {
+#                 break;
+#             }
+
+#             sum -= arr[low - 1];
+#             sum += arr[high];
+#         }
+
+#         return ans;
 #     }
-
-# }
-        
+# }  
         
